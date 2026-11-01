@@ -27,12 +27,20 @@ As organizations grow, the logical structure expands:
 A ticket-based authentication system involving the client, the service, and the Domain Controller (Key Distribution Center):
 1.  **TGT Request:** Client sends username/timestamp to the Domain Controller.
 2.  **TGT Reply:** Domain Controller issues a Ticket Granting Ticket (TGT) and a session key.
-3.  **TGS Request:** Client requests a Ticket Granting Service (TGS) for a specific service using the TGT and the Service Principal Name (SPN).
-4.  **TGS Reply:** Domain Controller issues the TGS and a service session key.
-5.  **Service Authentication:** Client presents the TGS directly to the target service to authenticate.
+   <img width="1047" height="416" alt="image" src="https://github.com/user-attachments/assets/c9daecbd-6047-45c7-89bc-910b288796bd" />
+
+4.  **TGS Request:** Client requests a Ticket Granting Service (TGS) for a specific service using the TGT and the Service Principal Name (SPN).
+5.  **TGS Reply:** Domain Controller issues the TGS and a service session key.
+   <img width="1049" height="486" alt="image" src="https://github.com/user-attachments/assets/aa93a5c6-6b62-48bc-a4a4-e8a2215140d6" />
+
+7.  **Service Authentication:** Client presents the TGS directly to the target service to authenticate.
+   <img width="1029" height="362" alt="image" src="https://github.com/user-attachments/assets/e70ba153-19b3-415f-9bbd-d83eb3bc50af" />
+
 
 ### Net-NTLM (Legacy/Fallback Protocol)
 A challenge-response authentication mechanism:
+<img width="1051" height="605" alt="image" src="https://github.com/user-attachments/assets/f2dc0661-bd33-4e8e-b4cd-868a4a6f960a" />
+
 1.  Client sends an authentication request to the server.
 2.  Server replies with an NTLM Challenge.
 3.  Client combines the challenge with their hashed password to create a Response.
