@@ -57,7 +57,7 @@ With hundreds of alerts in a queue, picking the right alert first is vital to pr
 
 The operational flowchart below maps out the exact step-by-step path an L1 analyst must follow during an investigation:
 
-![SOC Alert Triage Workflow](../assets/image_2c11a8.png)[cite: 1]
+<img src="https://raw.githubusercontent.com/imedcherfaoui/cyber-learning-labs/main/assets/image_2c11a8.png" alt="SOC Alert Triage Workflow" width="100%">
 
 ### Phase A: Initial Actions
 
