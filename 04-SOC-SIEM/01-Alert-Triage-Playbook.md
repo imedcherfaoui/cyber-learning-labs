@@ -83,3 +83,54 @@ The operational flowchart below maps out the exact step-by-step path an L1 analy
   - _If False Positive / Handled:_ Proceed to closure[cite: 1].
 - **Step 11:** Document your findings by adding a comprehensive analytical comment detailing your steps and verdict reasoning[cite: 1].
 - **Step 12:** Return to the dashboard and move the alert status to **"Closed"**[cite: 1].
+
+---
+
+## 6. Incident Reporting & Escalation Standard
+
+Once an alert is investigated, an analyst must transition from triage to documentation and communication. Proper reporting ensures continuity, saves L2 analysts from starting investigations from scratch, and builds long-term institutional knowledge.
+
+![SOC Alert Triage Workflow](../assets/Alert_Funnel.svg)
+
+### The Purpose of Alert Reporting
+*   **Context for Escalation:** A well-written report provides instant context for L2 analysts handling True Positives.
+*   **Permanent Records:** While raw SIEM logs are purged or archived after 3–12 months due to storage limits, ticket alerts and reports are kept indefinitely.
+*   **Skill Improvement:** *“If you can't explain it simply, you don't understand it well enough.”* Writing forces clarity and solidifies analytical skills.
+
+### The Five Ws Reporting Format
+Every investigation report on a True Positive or complex alert must answer the **Five Ws**:
+1.  **Who:** Which user account logged in, executed a command, or downloaded the file?
+2.  **What:** What exact action or sequence of events was performed?
+3.  **When:** Exact timestamps of when the suspicious activity started and ended.
+4.  **Where:** Which device hostname, IP address, or external website was involved?
+5.  **Why:** The core reasoning behind your final verdict (True Positive vs. False Positive).
+
+![SOC Alert Triage Workflow](../assets/Report_Format.svg)
+
+---
+
+## 7. Escalation Matrix & L2 Hand-off
+
+When an alert requires senior intervention, L1 analysts must follow established escalation pathways.
+
+### Criteria for Escalation to L2
+An alert must be escalated if:
+1.  It is an indicator of a major cyberattack requiring deep Digital Forensics and Incident Response (DFIR).
+2.  Active containment or remediation actions are required (e.g., host isolation, forced password reset, malware removal).
+3.  Cross-departmental or external communication is mandatory (customers, legal, management, law enforcement).
+4.  **Uncertainty/Stuck:** The L1 analyst does not fully understand the alert and requires senior guidance. *(Note: In your first months, always ask for help rather than blindly closing an alert you don't understand).*
+
+### Escalation Protocol
+1.  Reassign the alert ticket object to the active L2 analyst on shift.
+2.  Attach your completed Five Ws report.
+3.  Ping the L2 analyst via corporate channels (Teams, Slack, or in-person) with the direct ticket link and a brief summary.
+
+---
+
+## 8. SOC Crisis Communication Guidelines
+When unexpected operational blockers occur during a shift, follow these standard resolutions:
+*   **Unresponsive L2 during a Critical Alert:** Check emergency escalation lists. Try calling L2, escalate to L3, and finally notify the SOC Manager.
+*   **Compromised Communication Channel:** If investigating a potential Slack/Teams account takeover, **do not** message the user through the compromised chat app. Use alternative channels (phone call, in-person).
+*   **Alert Floods / Queue Overload:** Prioritize critically according to standard workflow logic, and immediately notify the shift L2 of the backlog volume.
+*   **Post-Closure Regret (Misclassification):** If you realize a closed alert was actually a True Positive, **immediately** notify L2. Attackers often dwell silently; early notification can mitigate further impact.
+*   **SIEM Log Parsing Failures:** Do not skip the alert. Investigate what data is available and escalate the broken parser/unsearchable log issue immediately to SOC engineers or L2.
