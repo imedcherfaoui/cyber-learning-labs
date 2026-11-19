@@ -184,3 +184,34 @@ When triaging an unusual login alert following a flow like the one above:
 *   Check expected user location and context (e.g., via HR/identity sources) and look up the source IP in threat intelligence and anonymization services.
 *   If the IP is confirmed malicious, move straight to escalation.
 *   Otherwise, inspect follow-on actions in the SIEM (such as MFA resets), review historical login baselines (e.g., a 90-day login timeline), and evaluate whether VPN/location or login timing is atypical before closing as a False Positive or escalating to L2.
+
+---
+
+## 11. SOC Metrics, SLAs & Continuous Improvement
+A SOC exists to protect the confidentiality, integrity, and availability of organizational digital assets by generating, triaging, and responding to alerts. Metrics measure how effectively the team filters noise, spots real threats, and meets Service Level Agreements (SLAs).
+
+### Core SOC Metrics
+| Metric | Formula | What It Measures | Target / Benchmark Notes |
+| :--- | :--- | :--- | :--- |
+| **Alerts Count (AC)** | Total Count of Alerts Received | Overall workload of SOC analysts | Often around **5–30 alerts/day per L1** (varies by org size); 0 alerts for days can indicate log/SIEM visibility issues |
+| **False Positive Rate (FPR)** | $\text{False Positives} / \text{Total Alerts}$ | Level of noise in the alert queue | 0% is unrealistic, but **$\ge 80\%$** signals severe alert fatigue risk and requires rule/tool tuning |
+| **Alert Escalation Rate (AER)** | $\text{Escalated Alerts} / \text{Total Alerts}$ | L1 independence, accuracy, and escalation habits | Commonly aimed **$< 50\%$** (ideally **$< 20\%$**), while still escalating anything unclear rather than guessing |
+| **Threat Detection Rate (TDR)** | $\text{Detected Threats} / \text{Total Threats}$ | Overall reliability of SOC detection and triage | Aim for **100%**—missed threats from broken rules or misclassifications can lead to ransomware or data exfiltration |
+
+### Triage Speed Metrics & SLAs
+An **SLA (Service Level Agreement)** sets speed expectations—either between an internal SOC and management or between an MSSP and its clients:
+
+![SOC Triage & Response Timeline](../assets/Triage_Metrics.svg)
+
+*   **SOC Team Availability:** Coverage schedule, such as business hours (e.g., Mon–Fri 8/5) or **24/7** continuous monitoring.
+*   **Mean Time to Detect (MTTD):** Average time between when an attack occurs and when SOC tools generate an alert (e.g., **5 minutes** SLA benchmark).
+*   **Mean Time to Acknowledge (MTTA):** Average time it takes an L1 analyst to pick up and start triaging a new alert (e.g., **10 minutes** SLA benchmark).
+*   **Mean Time to Respond (MTTR):** Average time from when the SOC receives an alert until the threat is contained/mitigated—which includes MTTA plus investigation, escalation, and response steps (e.g., **60 minutes** SLA benchmark).
+
+### Diagnosing & Improving Poor Metrics
+| Observed Issue | Practical Remediation Steps |
+| :--- | :--- |
+| **FPR over 80%** (Too much noise) | Exclude known benign baselines (like routine system updates) in SIEM/EDR rules; automate repetitive triage with SOAR or scripts. |
+| **MTTD over 30 min** (Slow detection) | Work with SOC engineers to tune rule execution intervals/logic; verify log ingestion happens near real-time rather than delayed batches. |
+| **MTTA over 30 min** (Slow pickup) | Enable real-time alert notifications; balance queue distribution evenly across analysts on shift. |
+| **MTTR over 4 hours** (Slow containment) | Escalate confirmed threats rapidly to L2; maintain clear, documented response procedures for common attack scenarios. |
