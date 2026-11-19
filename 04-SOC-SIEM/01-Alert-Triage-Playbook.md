@@ -178,7 +178,7 @@ Well-designed workbooks typically break investigation logic into sequential stag
 
 ### Example: Unusual Login Location Workbook
 
-![Unusual Login Location Workbook Flow](../assets/Workbook_Example .svg)
+![Unusual Login Location Workbook Flow](../assets/Workbook_Example.svg)
 
 When triaging an unusual login alert following a flow like the one above:
 *   Check expected user location and context (e.g., via HR/identity sources) and look up the source IP in threat intelligence and anonymization services.
