@@ -44,7 +44,7 @@ EDR sensors collect continuous, structured telemetry from endpoints so analysts 
 4. **MITRE ATT&CK Mapping:** Automatically tags alerts with Tactic and Technique IDs (e.g., *Persistence $\rightarrow$ Scheduled Task/Job*).
 5. **Machine Learning (ML):** Identifies complex, multi-stage, or fileless intrusion chains across telemetry.
 
-![EDR Detections Dashboard](../assets/CrowdStrike-Falcon-EDR-detections-page.png)
+![EDR Detections Dashboard](../assets/CrowdStrike-Flacon-EDR-detections-page.png)
 
 ### Pillar 3: Response & Containment Actions
 When a True Positive is confirmed, analysts execute containment directly from the central EDR console:
